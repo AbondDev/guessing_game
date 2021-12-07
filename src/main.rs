@@ -2,6 +2,7 @@
 use rand::Rng;
 // Imports the io library from the C standard library because std::io is not included in the prelude
 use std::io;
+use std::cmp::Ordering;
 
 // INTERESTING NOTE:
 // Instructions for using a crate are in each crate’s documentation. 
@@ -43,4 +44,11 @@ fn main() {
     // This isn't the best error handling. That will be covered later.
 
     println!("You guessed: {}", guess);
+
+    // NOTE: This does not work. I just couldn't finish the chapter yet
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too Small"),
+        Ordering::Greater => println!("Too Big!"),
+        Ordering::Equal => println!("You Win!")
+    }
 }
